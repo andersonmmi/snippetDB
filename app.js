@@ -19,6 +19,16 @@ app.get('/', function(req,res){
    res.render('index');
 });
 
+app.post('/', function(req,res){
+   console.log("login button pressed");
+   if (req.body.userId === req.body.userId && req.body.password === req.body.password){
+      res.send('success');
+   } else{
+      console.log("login button press failed");
+      res.send('failed')
+   }
+});
+
 app.get('/home/', function(req,res){
    res.render('home');
 });
