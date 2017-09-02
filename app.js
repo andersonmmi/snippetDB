@@ -23,6 +23,10 @@ app.get('/home/', function(req,res){
    res.render('home');
 });
 
+app.get('/snippets/', function(req,res){
+   res.render('snippets');
+});
+
 //build app.listen here
 app.listen(3000, function() {
    console.log('Listening on port 3000')
