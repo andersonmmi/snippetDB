@@ -1,8 +1,11 @@
-const express = require('express');
-
 let hideyButton = document.getElementById('hideyButton');
+let snippetsField = document.getElementById('snippetsField');
 
-
-
-
-module.exports = behaviors
+hideyButton.addEventListener("click",function(){
+  console.log("hideyButton clicked");
+    if (snippetsField.style.display === 'none') {
+        snippetsField.style.display = 'block';
+    } else {
+        snippetsField.style.display = 'none';
+    }
+});
