@@ -22,7 +22,7 @@ app.get('/', function(req,res){
 app.post('/', function(req,res){
    console.log("login button pressed");
    if (req.body.userId === req.body.userId && req.body.password === req.body.password){
-      res.send('success');
+      res.redirect('home');
    } else{
       console.log("login button press failed");
       res.send('failed')
