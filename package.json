@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/andersonmmi/snippetDB/issues"
   },
-  "homepage": "https://github.com/andersonmmi/snippetDB#readme"
+  "homepage": "https://github.com/andersonmmi/snippetDB#readme",
+  "dependencies": {
+    "chalk": "^2.1.0"
+  },
+  "devDependencies": {}
 }

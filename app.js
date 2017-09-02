@@ -7,6 +7,7 @@ const mongodb = require('mongodb');
 const mongoURL = 'mongodb://localhost:27017/snippet_creators';
 const app = express();
 mongoose.connect(mongoURL);
+const chalk = require('chalk');
 
 app.engine('mustache', mustacheExpress());
 app.set('views', './views')
@@ -39,5 +40,5 @@ app.get('/snippets/', function(req,res){
 
 //build app.listen here
 app.listen(3000, function() {
-   console.log('Listening on port 3000')
+   console.log(chalk.yellow.bgBlue.bold('Listening on port 3000'))
 });
