@@ -1,0 +1,19 @@
+{
+  "name": "snippetdb",
+  "version": "1.0.0",
+  "description": "Database stores code snippets for individual users",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andersonmmi/snippetDB.git"
+  },
+  "author": "Aaron Anderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andersonmmi/snippetDB/issues"
+  },
+  "homepage": "https://github.com/andersonmmi/snippetDB#readme"
+}
