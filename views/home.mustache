@@ -8,10 +8,11 @@
   </head>
   <body>
     <h1>!!! Hello Moto</h1>
+    <a href="/">Logout Mudda Fugga!!</a>
     <form class="addSnippets" action="/home/" method="post">
-      <fieldset>
+      <fieldset class="alert alert-secondary">
         <legend><button id="hideyButton" type="button" name="fieldset">Click Here to Add a Snippet</button></legend>
-        <div id="snippetsField" style="display: none">
+        <div id="snippetsField" style="display: none" class="alert alert-success">
           <p>
             <label for="title">Title:</label>
             <input type="text" name="title" value="">
@@ -32,10 +33,15 @@
             <label for="tags">Tags:</label>
             <input type="text" name="tags" value="">
           </p>
+          <p>
+            <button type="submit" name="button">Push Snippet</button>
+          </p>
         </div>
       </fieldset>
       <a href="/snippets/">Snippets</a>
     </form>
+
+
     <script type="text/javascript" src="/public/behaviors.js">
 
     </script>
