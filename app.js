@@ -27,7 +27,6 @@ app.post('/', function(req,res){
       req.body.password === req.body.password){
       res.redirect('/home/');
    } else{
-      console.log("login button press failed");
       res.send('failed')
    }
 });
@@ -44,30 +43,16 @@ app.get('/home/', function(req,res){
 });
 
 app.post('/home/', function(req,res){
-   // TODO: complete create object
-   console.log(chalk.red.bgWhite.bold("attempting add app.js 48"));
-   console.log(req.body.title);
    Snippets.create(
       {author: "Aaron"},
       {title: req.body.title},
       {code: req.body.code},
       {notes: req.body.notes},
       {language: req.body.language},
-      {tags: req.body.tags})
-   .then(function (snippet) {
-      res.render('home');
-   })
-   .catch(function (error) {
-      let errorMsg;
-      if (error.code === DUPLICATE_RECORD_ERROR) {
-         // make message about duplicate
-         errorMsg = `The Title "${req.body.title}" has already been used.`
-      } else {
-         errorMsg = "You have encountered an unknown error."
-      }
-         res.render('home');
-   });
+      {tags: req.body.tags});
+   res.redirect('/home/');
 });
+
 
 app.get('/snippets/', function(req,res){
    res.render('snippets');
