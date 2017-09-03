@@ -31,6 +31,8 @@ app.post('/', function(req,res){
 });
 
 app.get('/home/', function(req,res){
+   // TODO: submit info from form to DB
+
    res.render('home');
 });
 
