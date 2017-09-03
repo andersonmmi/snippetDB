@@ -9,6 +9,7 @@
   <body>
     <h1>!!! Hello Moto</h1>
     <a href="/">Logout Mudda Fugga!!</a>
+    {{errorMsg}}
     <form class="addSnippets" action="/home/" method="post">
       <fieldset class="alert alert-secondary">
         <legend><button id="hideyButton" type="button" name="fieldset">Click Here to Add a Snippet</button></legend>
@@ -38,7 +39,9 @@
           </p>
         </div>
       </fieldset>
-      <a href="/snippets/">Snippets</a>
+        {{#snippets}}
+          <a href="/snippets/{{title}}">{{title}}</a>
+        {{/snippets}}
     </form>
 
 
