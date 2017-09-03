@@ -23,7 +23,6 @@ app.get('/', function(req,res){
 });
 
 app.post('/', function(req,res){
-   console.log("login button pressed");
    if (req.body.userId === req.body.userId &&
       req.body.password === req.body.password){
       res.redirect('/home/');
@@ -34,14 +33,19 @@ app.post('/', function(req,res){
 });
 
 app.get('/home/', function(req,res){
-   Snippets.find().then(function (snippets){
+   Snippets.find()
+   .then(function (snippets){
       res.render('home',{snippets});
    })
+   .catch(function (error){
+      let errorMsg = "there is an error";
+      console.log(errorMsg);
+   });
 });
 
 app.post('/home/', function(req,res){
    // TODO: complete create object
-   console.log(chalk.red.bgWhite.bold("attempting add app.js 42"));
+   console.log(chalk.red.bgWhite.bold("attempting add app.js 48"));
    console.log(req.body.title);
    Snippets.create(
       {author: "Aaron"},
@@ -51,7 +55,7 @@ app.post('/home/', function(req,res){
       {language: req.body.language},
       {tags: req.body.tags})
    .then(function (snippet) {
-      res.redirect('/home/');
+      res.render('home');
    })
    .catch(function (error) {
       let errorMsg;
