@@ -34,14 +34,22 @@ app.post('/', function(req,res){
 });
 
 app.get('/home/', function(req,res){
-      res.render('home');
+   Snippets.find().then(function (snippets){
+      res.render('home',{snippets});
+   })
 });
 
 app.post('/home/', function(req,res){
-   // TODO: submit info from form to DB
+   // TODO: complete create object
    console.log(chalk.red.bgWhite.bold("attempting add app.js 42"));
    console.log(req.body.title);
-   Snippets.create({title: req.body.title})
+   Snippets.create(
+      {author: "Aaron"},
+      {title: req.body.title},
+      {code: req.body.code},
+      {notes: req.body.notes},
+      {language: req.body.language},
+      {tags: req.body.tags})
    .then(function (snippet) {
       res.redirect('/home/');
    })
