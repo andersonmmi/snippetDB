@@ -50,7 +50,7 @@ app.post('/home/', function(req,res){
       {notes: req.body.notes},
       {language: req.body.language},
       {tags: req.body.tags});
-   res.redirect('/home/');
+   res.redirect('/home/', "home", "get");
 });
 
 
