@@ -42,14 +42,17 @@ app.get('/home/', function(req,res){
    });
 });
 
+// there is a validation error produced by this post method
 app.post('/home/', function(req,res){
-   Snippets.create(
-      {author: "Aaron"},
-      {title: req.body.title},
-      {code: req.body.code},
-      {notes: req.body.notes},
-      {language: req.body.language},
-      {tags: req.body.tags});
+   console.log(req.body.title+req.body.code+req.body.notes+req.body.language+req.body.tags);
+   Snippets.create({
+      author   : "Aaron",
+      title    : req.body.title,
+      code     : req.body.code,
+      notes    : req.body.notes,
+      language : req.body.language,
+      tags     : req.body.tags
+   });
    res.redirect('/home/', "home", "get");
 });
 
