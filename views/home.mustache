@@ -40,10 +40,14 @@
         </div>
       </fieldset>
     </form>
+    <ul>
+      {{#snippets}}
+        <li>
+          <a href="/snippets/{{title}}">{{title}}</a>
+        </li>
+      {{/snippets}}
+    </ul>
 
-    {{#snippets}}
-    <a href="/snippets/{{title}}">{{title}}</a>
-    {{/snippets}}
 
     <script type="text/javascript" src="/public/behaviors.js"></script>
   </body>

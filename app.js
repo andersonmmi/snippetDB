@@ -42,7 +42,6 @@ app.get('/home/', function(req,res){
    });
 });
 
-// there is a validation error produced by this post method
 app.post('/home/', function(req,res){
    console.log(req.body.title+req.body.code+req.body.notes+req.body.language+req.body.tags);
    Snippets.create({
@@ -56,8 +55,7 @@ app.post('/home/', function(req,res){
    res.redirect('/home/', "home", "get");
 });
 
-
-app.get('/snippets/', function(req,res){
+app.get('/snippets/:title', function(req,res){
    res.render('snippets');
 });
 
