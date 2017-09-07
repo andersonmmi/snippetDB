@@ -9,6 +9,7 @@ const app = express();
 mongoose.connect(mongoURL);
 const chalk = require('chalk');
 const Snippets = require('./models/snippets');
+const Creators = require('./models/creators');
 const DUPLICATE_RECORD_ERROR = 11000;
 let username = "a";
 let password = "a";
@@ -35,6 +36,15 @@ app.post('/', function(req,res){
 
 app.get('/registration/', function(req,res){
    res.render('registration');
+});
+
+app.post('/registration/', function(req,res){
+   console.log(req.body.username+" "+req.body.password);
+   Creators.create({
+      username: req.body.username,
+      password: req.body.password
+   });
+   res.redirect('/');
 });
 
 app.get('/home/', function(req,res){
