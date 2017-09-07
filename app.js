@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mustacheExpress = require('mustache-express');
 const mongodb = require('mongodb');
 const bcrypt = require('bcryptjs');
+const session = require('express-session');
 const mongoURL = 'mongodb://localhost:27017/snippetsdb';
 const app = express();
 mongoose.connect(mongoURL);
