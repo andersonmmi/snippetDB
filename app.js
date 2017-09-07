@@ -29,6 +29,10 @@ app.use(session({
 }));
 
 app.get('/', function(req,res){
+   //landing here resets username and authentication
+   req.session.username = "";
+   req.session.authenticated = false;
+   console.log(req.session.username+" "+req.session.authenticated);
    res.render('index');
 });
 
@@ -36,6 +40,11 @@ app.post('/', function(req,res){
    Creators.findOne({username: req.body.username})
       .then(function(compare){
          bcrypt.compareSync(req.body.password, compare.password)
+         // record username and authentication in session
+         req.session.username = req.body.username;
+         req.session.authenticated = true;
+         console.log(req.session.username+" "+req.session.authenticated);
+         // if else on compareSync
          res.redirect('/home/');
       })
       .catch(function(error){
