@@ -22,6 +22,11 @@ app.set('view engine', 'mustache')
 
 app.use('/public', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+}));
 
 app.get('/', function(req,res){
    res.render('index');
