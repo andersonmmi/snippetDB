@@ -10,10 +10,16 @@
     <h1>!!! User Registration</h1>
     <a href="/home/">Back</a>
     <form class="registration_form" action="/" method="post">
-      <fieldset>
+      <fieldset class="alert alert-success">
         <legend>Registration</legend>
-        <p>username</p>
-        <p>password</p>
+        <p>
+          <label for="username">Username</label>
+          <input type="text" name="username" value="" autofocus>
+        </p>
+        <p><label for="password">Password</label>
+          <input type="text" name="password" value="">
+        </p>
+        <button type="submit" name="register">Register</button>
       </fieldset>
     </form>
   </body>
