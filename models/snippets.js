@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
   notes   : String,
   language: String,
   tags    : String
-})
+});
 
 const Snippets = mongoose.model('Snippets', schema);
 

@@ -4,6 +4,7 @@ mongoose.Promise = require('bluebird');
 const bodyParser = require('body-parser');
 const mustacheExpress = require('mustache-express');
 const mongodb = require('mongodb');
+const bcrypt = require('bcryptjs');
 const mongoURL = 'mongodb://localhost:27017/snippetsdb';
 const app = express();
 mongoose.connect(mongoURL);
@@ -11,8 +12,8 @@ const chalk = require('chalk');
 const Snippets = require('./models/snippets');
 const Creators = require('./models/creators');
 const DUPLICATE_RECORD_ERROR = 11000;
-let username = "a";
-let password = "a";
+let username;
+let password;
 
 app.engine('mustache', mustacheExpress());
 app.set('views', './views')
@@ -40,9 +41,12 @@ app.get('/registration/', function(req,res){
 
 app.post('/registration/', function(req,res){
    console.log(req.body.username+" "+req.body.password);
+   username = req.body.username;
+   password = req.body.password;
+   let hash = bcrypt.hashSync(password, 8);
    Creators.create({
-      username: req.body.username,
-      password: req.body.password
+      username: username,
+      password: hash
    });
    res.redirect('/');
 });
@@ -59,7 +63,6 @@ app.get('/home/', function(req,res){
 });
 
 app.post('/home/', function(req,res){
-   console.log(req.body.title+req.body.code+req.body.notes+req.body.language+req.body.tags);
    Snippets.create({
       author   : "Aaron",
       title    : req.body.title,
