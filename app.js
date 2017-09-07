@@ -33,6 +33,10 @@ app.post('/', function(req,res){
    }
 });
 
+app.get('/registration/', function(req,res){
+   res.render('registration');
+});
+
 app.get('/home/', function(req,res){
    Snippets.find()
    .then(function (snippets){
