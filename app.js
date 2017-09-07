@@ -26,16 +26,10 @@ app.get('/', function(req,res){
    res.render('index');
 });
 
-//does bcrypt.compareSync compare to the stored hash?
 app.post('/', function(req,res){
    Creators.findOne({username: req.body.username})
       .then(function(compare){
-         console.log(req.body.username+" "+req.body.password);
-         console.log({password});
-         console.log(compare.password);
-         console.log(
-            bcrypt.compareSync(req.body.password, compare.password)
-         );
+         bcrypt.compareSync(req.body.password, compare.password)
          res.redirect('/home/');
       })
       .catch(function(error){
