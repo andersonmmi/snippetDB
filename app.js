@@ -26,13 +26,18 @@ app.get('/', function(req,res){
    res.render('index');
 });
 
+//does bcrypt.compareSync compare to the stored hash?
 app.post('/', function(req,res){
-   if (req.body.userId === username &&
-      req.body.password === password){
-      res.redirect('/home/');
-   } else{
-      res.send('failed')
-   }
+   Creators.findOne({username: req.body.username})
+      .then(function(compare){
+         console.log(req.body.username+" "+req.body.password);
+         console.log({password});
+         console.log(compare.password);
+         console.log(
+            bcrypt.compareSync(req.body.password, compare.password)
+         );
+         res.redirect('/home/');
+      });
 });
 
 app.get('/registration/', function(req,res){
