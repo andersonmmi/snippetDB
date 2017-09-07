@@ -10,12 +10,14 @@
     <h1>!!! Snippets go here Mudda Fugga!!1</h1>
     <a href="/home/">Go Home Mudda Fugga!!</a>
     {{#snippets}}
-      <p>{{author}}</p>
-      <p>{{title}}</p>
-      <p>{{code}}</p>
-      <p>{{notes}}</p>
-      <p>{{language}}</p>
-      <p>{{tags}}</p>
+      <section>
+        <p>Author   : {{author}}</p>
+        <p>Title    : {{title}}</p>
+        <p>Code     : <code>{{code}}</code></p>
+        <p>Notes    : {{notes}}</p>
+        <p>Language : {{language}}</p>
+        <p>Tags     : {{tags}}</p>
+      </section>
     {{/snippets}}
   </body>
 </html>
