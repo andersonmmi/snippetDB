@@ -10,6 +10,8 @@ mongoose.connect(mongoURL);
 const chalk = require('chalk');
 const Snippets = require('./models/snippets');
 const DUPLICATE_RECORD_ERROR = 11000;
+let username = "a";
+let password = "a";
 
 app.engine('mustache', mustacheExpress());
 app.set('views', './views')
@@ -23,8 +25,8 @@ app.get('/', function(req,res){
 });
 
 app.post('/', function(req,res){
-   if (req.body.userId === "a" &&
-      req.body.password === "a"){
+   if (req.body.userId === username &&
+      req.body.password === password){
       res.redirect('/home/');
    } else{
       res.send('failed')
@@ -56,7 +58,10 @@ app.post('/home/', function(req,res){
 });
 
 app.get('/snippets/:title', function(req,res){
-   res.render('snippets');
+   Snippets.findOne({title: req.params.title})
+   .then(function(snippets){
+      res.render('snippets',{snippets});
+   });
 });
 
 //build app.listen here
