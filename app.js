@@ -37,6 +37,10 @@ app.post('/', function(req,res){
             bcrypt.compareSync(req.body.password, compare.password)
          );
          res.redirect('/home/');
+      })
+      .catch(function(error){
+         let errorMsg = "Oops, something went worng!";
+         res.render('index', {errorMsg});
       });
 });
 

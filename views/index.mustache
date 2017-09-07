@@ -8,6 +8,12 @@
   </head>
   <body>
     <h1>!!! Change Index Title</h1>
+    {{#errorMsg}}
+      <div class="alert alert-warning">
+      <h3>{{errorMsg}}</h3>
+      </div>
+    {{/errorMsg}}
+
     <form class="login" action="/" method="post">
       <fieldset class="alert alert-success">
         <legend>Login</legend>
