@@ -23,8 +23,8 @@ app.get('/', function(req,res){
 });
 
 app.post('/', function(req,res){
-   if (req.body.userId === req.body.userId &&
-      req.body.password === req.body.password){
+   if (req.body.userId === "a" &&
+      req.body.password === "a"){
       res.redirect('/home/');
    } else{
       res.send('failed')
