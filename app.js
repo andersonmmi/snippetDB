@@ -38,7 +38,7 @@ app.get('/', function(req,res){
 app.post('/', function(req,res){
    Creators.findOne({username: req.body.username})
    .then(function(compare){
-      if(bcrypt.compareSync(req.body.password, compare.password)){
+      if(bcrypt.compareSync(req.body.password, compare.password)===true){
          req.session.username = req.body.username;
          req.session.authenticated = true;
          console.log(req.session.username+" "+req.session.authenticated);
@@ -47,6 +47,10 @@ app.post('/', function(req,res){
          let errorMsg = "Oops, something went worng!";
          res.render('index', {errorMsg});
       }
+   })
+   .catch(function(error){
+      let errorMsg = "Oops, something went wrong!"
+      res.render('index',{errorMsg})
    });
 });
 
