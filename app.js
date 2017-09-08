@@ -67,7 +67,7 @@ app.post('/registration/', function(req,res){
 });
 
 app.get('/home/', function(req,res){
-   Snippets.find()
+   Snippets.find({author: req.session.username})
    .then(function (snippets){
       res.render('home',{snippets});
    })
