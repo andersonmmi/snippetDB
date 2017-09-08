@@ -79,13 +79,14 @@ app.get('/home/', function(req,res){
 
 app.post('/home/', function(req,res){
    Snippets.create({
-      author   : "Aaron",
+      author   : req.session.username,
       title    : req.body.title,
       code     : req.body.code,
       notes    : req.body.notes,
       language : req.body.language,
       tags     : req.body.tags
    });
+   console.log(req.session.username);
    res.redirect('/home/', "home", "get");
 });
 
